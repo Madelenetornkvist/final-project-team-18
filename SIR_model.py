@@ -13,17 +13,17 @@ import matplotlib.pyplot as plt
 def deriv(y, t, N, beta, k, delta):
     S, E, I, R = y
     dSdt = -beta * S * I / N
-    dEdt = beta * S * I / N - k * E
-    dIdt = delta * E * k * I
+    dEdt = beta * S * I / N - delta * E
+    dIdt = delta * E - k * I
     dRdt = k * I
     return dSdt, dEdt, dIdt, dRdt
 
 # describe the parameters
 N = 720 # population
-beta = 2.5          
+beta = 1.5          
 k=1/2 
 delta = 1.0/5.0
-S0, E0, I0, R0 = N-1, 1, 1, 0  # initial conditions: one infected, rest susceptible
+S0, E0, I0, R0 = N-1, 0, 1, 0  # initial conditions: one infected, rest susceptible
 
 
 t = np.linspace(0, 99, 100) # Grid of time points (in days)
